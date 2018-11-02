@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
 import moment from 'moment';
+import { connect } from 'react-redux';
 
 
-export default class Calendar extends Component {
+
+class Calendar extends Component {
   constructor() {
   super();
     this.state = {
       counter: 0,
       daysArr: [],
-      filteredArr: [],
-      goal: 10
+      filteredArr: []
     }
   }
 
@@ -18,41 +19,40 @@ export default class Calendar extends Component {
   }
 
   initiateDays = () => {
-    const today = moment().add(4, 'd');
-
     // Set beginning and end of habit
-    let startOfHabit = moment().startOf(today, 'd');
-    let endOfHabit = moment().add(this.state.goal, 'day');
+    let startOfHabit = moment(this.props.start_date);
+    let endOfHabit = moment().add(this.props.goal -1, 'day');
     let days = [];
     let day = startOfHabit;
     
     // create array of days for goal
     while (day <= endOfHabit) {
-        days.push(day);
-        day = day.clone().add(1, 'd');
+      days.push(day);
+      day = day.clone().add(1, 'd');
     }
     
+    // filter to only show habits before today
+    const today = moment();
     const beforeToday = (value) => value.isSameOrBefore(today)
     const filteredArr = days.filter(beforeToday)
-
     this.setState({filteredArr: filteredArr})
 
+    // push all dates into object of arrays with checked boolean
     const weekArr = [];
     for (let i = 0; i < filteredArr.length; i++) {
       weekArr[i] = {date: filteredArr[i], checked: false}
     }
-   
     this.setState({daysArr: weekArr});
   }
   
   handleCheckChange = (index) => {
-    
+    // change the value of checked in object when checkbox is checked
     let newArr = this.state.daysArr
     newArr[index].checked = !newArr[index].checked    
     this.setState( {daysArr: newArr})
     
+    // add to counter for each check
     let count = 0
-    
     this.state.daysArr.map(
       (day, index) => {
         if (day.checked) {
@@ -61,41 +61,43 @@ export default class Calendar extends Component {
         } else return count;
       }
     )
-    
     this.setState({ counter: count})
-    
   }
   
   render() {
-    
-    console.log('filteredArr---------->(in return)', this.state.filteredArr);
-    console.log('counter', this.state.counter);
-    console.log('daysArr----->', this.state.daysArr);
-
+    console.log('props',this.props);
     const aWeek = this.state.daysArr.map(
       (item, index) => {
-        
-        console.log('item', item.checked);
-        
         return (
           <div className="week" key={item.date.format('LLLL')}>
             <div>{item.date.format('LLLL')}</div>
-            <input type="checkbox" checked={this.state.daysArr[index].checked} onChange={ () => this.handleCheckChange(index)}></input>
+            <input type="checkbox" checked={this
+              .checked} onChange={ () => this.handleCheckChange(index)}></input>
           </div>
         )
       }
     )
-    console.log(this.state.checkedArr);
-    
-    
     return (
       <div>
         {aWeek}
         <h1>{this.state.counter}/
+        {/* {this.props.goal} */}
         {this.state.daysArr.length}
         </h1>
-        <h2>Goal: {this.state.goal}</h2>
+        <h2>Goal: {this.props.goal}</h2>
       </div>
     )
   }
 }
+
+
+function mapStateToProps(state) {
+  const { goal, start_date } = state
+
+  return {
+    goal,
+    start_date
+  }
+}
+
+export default connect(mapStateToProps, {})( Calendar )
