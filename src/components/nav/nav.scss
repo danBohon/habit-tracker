@@ -1,0 +1,77 @@
+
+$colors: (
+    primary: rgb(66, 66, 66),
+    headerText: antiquewhite
+);
+
+$fontSizes: (
+
+);
+
+//@mixin mixinName {}
+
+//@include mixinName 
+
+
+.header {
+    height: 50px;
+    background: map-get($colors, primary);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: map-get($colors, headerText);
+    ul {
+        min-width: 400px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 0 20px;
+    }
+    a {
+        text-decoration: none;
+        color: map-get($colors, headerText);
+    }
+};
+
+
+.menu {
+    display: none;
+        .hamburger {
+            width: 35px;
+            height: 5px;
+            background: map-get($colors, headerText);
+            margin: 6px 0;
+        }
+  }
+
+  @media screen and (max-width: 600px) {
+    .menu {
+      display: initial;
+      position: fixed;
+      height: 36px;
+      width: 36px;
+      top: 10px;
+      right: 10px;
+      z-index: 3;
+    }
+    header nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      transform: translate(600px, 50px);
+      transition: .3s
+    }
+  
+    header nav ul {
+      flex-direction: column;
+      min-width: 100vw;
+      height: 100px;
+      padding: 40px 0;
+      background: rgb(41, 41, 43);
+    }
+  
+    header .show {
+      transform: translate(200px, 50px);
+    }
+  }
+

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
 import axios from 'axios';
+import moment from 'moment';
 
 export default class HabitForm extends Component {
     constructor() {
@@ -12,7 +13,10 @@ export default class HabitForm extends Component {
     }
 
     createHabit( title, goal ) {
-      axios.post('/api/habit', {title: title, goal: goal}).then()
+      const date = moment()
+      console.log('date', date);
+      
+      axios.post('/api/habit', {title: title, goal: goal, date: date}).then()
     }
 
 

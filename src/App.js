@@ -3,17 +3,13 @@ import logo from './logo.svg';
 import './App.css';
 import routes from './routes';
 import { Link } from 'react-router-dom';
-import { updateHabits } from './ducks/reducer';
+import Nav from './components/nav/Nav'
+import 'reset-css';
+// import { updateHabits } from './ducks/reducer';
 // import axios from 'axios';
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 
 export default class App extends Component {
-  
-
-  // componentDidUpdate() {
-
-  // }
-
   // componentDidMount() {
   //   this.getAllHabits();
   // }
@@ -28,9 +24,7 @@ export default class App extends Component {
     console.log('this.props APP JS', this.props);
     return (
       <div className="App">
-        <header className="App-header">
-          <Link to="/"><img src={logo} className="App-logo" alt="logo" /></Link>
-        </header>
+        <Nav></Nav>
         {routes}
       </div>
     );

@@ -1,13 +1,15 @@
 const initialState = {
     goal: null,
     start_date: "",
-    habits: []
+    habits: [],
+    user: ""
 };
 
 // const UPDATE_GOAL = "UPDATE_GOAL";
 // const UPDATE_START_DATE = "UPDATE_START_DATE";
 const UPDATE_HABIT = "UPDATE_HABIT";
 const UPDATE_HABITS = "UPDATE_HABITS";
+const USER_LOGIN = 'USER_LOGIN';
 
 export default function reducer(state = initialState, action) {
     console.log('REDUCER HIT: ACTION --->', action );
@@ -19,6 +21,8 @@ export default function reducer(state = initialState, action) {
         case UPDATE_HABITS:
             const { habits } = action.payload
             return Object.assign( {}, state, { habits: habits } );
+        case USER_LOGIN: 
+            return { ...state, user: action.payload };
         default:
             return state;
     }
@@ -42,3 +46,10 @@ export function updateHabits( habits ) {
         }
     }
 }
+
+export function userLogin(user) {
+    return {
+        type: USER_LOGIN,
+        payload: user
+    };
+};

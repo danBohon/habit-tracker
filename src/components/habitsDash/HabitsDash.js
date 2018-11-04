@@ -7,26 +7,8 @@ import { connect } from 'react-redux'
 // import moment from 'moment';
 
 class HabitsDash extends Component {
-    constructor() {
-        super();
-        this.state = {
-            habits: []
-        }
-    }
-
-    // componentDidMount() {
-    //   this.getAllHabits();
-    // }
-
-    // getAllHabits = () => {
-    //   axios.get('api/habit').then( res => {
-    //     this.setState({ habits: res.data })
-    //   })
-    // }
-
   render() {
-    
-    const result = this.state.habits.map( habit => {
+    const result = this.props.habits.map( habit => {
       return (
         <div key={habit.id}>
           <OneHabit 
@@ -34,7 +16,6 @@ class HabitsDash extends Component {
         </div>
       )
     })
-
     return (
       <div>
         <HabitForm />
