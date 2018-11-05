@@ -5,6 +5,7 @@ import OneHabit from '../oneHabit/OneHabit';
 // import axios from 'axios';
 import { connect } from 'react-redux'
 // import moment from 'moment';
+import './habitDash.scss'
 
 class HabitsDash extends Component {
   render() {
@@ -17,7 +18,7 @@ class HabitsDash extends Component {
       )
     })
     return (
-      <div>
+      <div className='dash'>
         <HabitForm />
         {result}
       </div>

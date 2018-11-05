@@ -19,9 +19,10 @@ class Calendar extends Component {
   }
 
   initiateDays = () => {
+    const { habit } = this.props.location.state;
     // Set beginning and end of habit
-    let startOfHabit = moment(this.props.start_date);
-    let endOfHabit = moment().add(this.props.goal -1, 'day');
+    let startOfHabit = moment(habit.start_date);
+    let endOfHabit = moment().add(habit.goal -1, 'day');
     let days = [];
     let day = startOfHabit;
     
@@ -65,7 +66,10 @@ class Calendar extends Component {
   }
   
   render() {
-    console.log('props',this.props);
+    console.log('daysArr', this.state.daysArr);
+    console.log(this.props);
+    
+    const { habit } = this.props.location.state;
     const aWeek = this.state.daysArr.map(
       (item, index) => {
         return (
@@ -84,7 +88,7 @@ class Calendar extends Component {
         {/* {this.props.goal} */}
         {this.state.daysArr.length}
         </h1>
-        <h2>Goal: {this.props.goal}</h2>
+        <h2>Goal: {habit.goal}</h2>
       </div>
     )
   }

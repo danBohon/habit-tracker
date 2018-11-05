@@ -1,0 +1,9 @@
+@import '../../sass/main.scss';
+
+.card {
+    @include card;
+}
+
+.card:hover {
+    background: map-get($colors, primary);
+}

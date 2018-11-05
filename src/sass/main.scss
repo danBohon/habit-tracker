@@ -1,0 +1,32 @@
+
+
+$colors: (
+    primary: rgb(66, 66, 66),
+    inputText: rgb(255, 0, 157),
+    headerText: antiquewhite
+);
+
+
+@mixin button {
+    height: 32px;
+    background: map-get($colors, primary);
+    color: map-get($colors, inputText);
+    border: none;
+}
+
+@mixin inputBox {
+    height: 30px;
+    color: map-get($colors, inputText);
+    background: map-get($colors, primary);
+    border: none;
+}
+
+@mixin card {
+    width: 400px;
+    height: 100px;
+    background: rgb(43, 42, 42);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: wheat;
+}

@@ -8,7 +8,7 @@ import Profile from "./components/profile/Profile";
 export default
 
 <Switch>
-    <Route path='/calendar' component={Calendar}/> 
+    <Route path='/calendar:id' component={Calendar}/> 
     <Route path='/habit' component={OneHabit}/> 
     <Route path='/profile' component={Profile}/>
     <Route path='/' component={HabitsDash}/> 

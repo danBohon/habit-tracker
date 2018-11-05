@@ -43,11 +43,11 @@ class Nav extends Component {
     return (
       <header className="header">
         <div className="logo">
-            <Link to='/'><a href="#/services">66 DAYS</a></Link>
+            <Link to='/'>66 DAYS</Link>
         </div>
         <div>{this.props.user.name}</div>
         <nav className={this.state.toggleNav ? 'show' : ''}>
-            <ul>
+            <ul onClick={this.toggle}>
                 <li><Link to='/profile'>Profile</Link></li>
                 <li>Goals</li>
                 <li>Friends</li>

@@ -1,0 +1,14 @@
+@import '../../sass/main.scss';
+
+.form {
+    @include card
+    
+}
+
+input {
+    @include inputBox
+}
+
+button {
+    @include button
+}

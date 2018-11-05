@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import routes from './routes';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import Nav from './components/nav/Nav'
 import 'reset-css';
 // import { updateHabits } from './ducks/reducer';

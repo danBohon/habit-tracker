@@ -1,8 +1,9 @@
+@import '../../sass/main.scss';
 
-$colors: (
-    primary: rgb(66, 66, 66),
-    headerText: antiquewhite
-);
+// $colors: (
+//     primary: rgb(66, 66, 66),
+//     headerText: antiquewhite
+// );
 
 $fontSizes: (
 
@@ -55,23 +56,24 @@ $fontSizes: (
       z-index: 3;
     }
     header nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      transform: translate(600px, 50px);
-      transition: .3s
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: translate(600px, 50px);
+        transition: .3s
     }
-  
+    
     header nav ul {
-      flex-direction: column;
-      min-width: 100vw;
-      height: 100px;
-      padding: 40px 0;
-      background: rgb(41, 41, 43);
+        flex-direction: column;
+        min-width: 100vw;
+        height: 100px;
+        padding: 40px 0;
+        background: rgb(41, 41, 43);
+        border: 2px solid map-get($colors, inputText)
     }
   
     header .show {
-      transform: translate(200px, 50px);
+      transform: translate(175px, 50px);
     }
   }
 
