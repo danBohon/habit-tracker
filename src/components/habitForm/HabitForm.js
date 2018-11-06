@@ -12,20 +12,47 @@ class HabitForm extends Component {
         this.state = {
             title: "",
             goal: "",
+            date: null,
         }
     }
 
     createHabit( title, goal ) {
       const date = moment()
-      console.log('date', date);
-      axios.post('/api/habit', {title: title, goal: goal, date: date}).then(() => this.getAllHabits())
+      this.setState( {date: date} )
+      axios.post('/api/habit', {title: title, goal: goal, date: date}).then( (res) => this.createCalendar(res.data.id) ).then(() => this.getAllHabits())
     }
     
     getAllHabits = () => {
-      axios.get('api/habit').then( res => {
+      axios.get('/api/habit').then( res => {
         this.props.updateHabits( res.data )
       })
     }
+
+    createCalendar = (habit_id) => {
+      // Set beginning and end of habit
+    let startOfHabit = moment(this.state.date);
+    let endOfHabit = moment().add(this.state.goal -1, 'day');
+    let days = [];
+    let day = startOfHabit;
+    
+    // create array of days for goal
+    while (day <= endOfHabit) {
+      days.push(day);
+      day = day.clone().add(1, 'd');
+    }
+
+    // push all dates into object of arrays with checked boolean
+    const weekArr = [];
+    for (let i = 0; i < days.length; i++) {
+      weekArr[i] = {date: days[i], checked: false}
+    }
+    // this.setState({daysArr: weekArr});
+    // console.log('calendar', weekArr);
+    
+    axios.post('/api/days', {habit_id: habit_id, days: weekArr}).then()
+  }
+  
+
 
 
   render() {

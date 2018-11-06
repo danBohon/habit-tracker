@@ -32,6 +32,9 @@ app.get('/auth/callback', authController.handleCallback);
 
 app.post('/api/habit', habitsController.createHabit);
 app.get('/api/habit', habitsController.getHabits);
+app.post('/api/days', habitsController.createCalendar);
+app.post('/api/calendar', habitsController.getCalendar);
+app.put('/api/calendar', habitsController.updateChecks);
 
 const PORT = 4000;
 app.listen(PORT, () => {
