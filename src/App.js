@@ -20,7 +20,6 @@ export default class App extends Component {
   // }
 
   render(props) {
-    console.log('this.props APP JS', this.props);
     return (
       <div className="App">
         <Nav></Nav>

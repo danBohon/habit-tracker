@@ -12,7 +12,7 @@ const UPDATE_HABITS = "UPDATE_HABITS";
 const USER_LOGIN = 'USER_LOGIN';
 
 export default function reducer(state = initialState, action) {
-    console.log('REDUCER HIT: ACTION --->', action );
+    // console.log('REDUCER HIT: ACTION --->', action );
 
     switch (action.type){
         case UPDATE_HABIT:

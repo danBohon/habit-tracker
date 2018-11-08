@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { updateHabit } from '../../ducks/reducer';
 import axios from 'axios';
 import './oneHabit.scss';
-import HabitChart from '../habitChart/HabitChart';
+// import HabitChart from '../habitChart/HabitChart';
 // import ProgressBar from '../progressBar/ProgressBar'
 
 class OneHabit extends Component {
@@ -46,7 +46,7 @@ class OneHabit extends Component {
     // map over calendar to format days
     const result = calendar.map((item) => moment(item.date));
     // filter to only show today
-    const today = moment().add(5, 'd')
+    const today = moment();
     const isToday = (value) => moment(value).isSame(today, 'd');
     const filteredArr = result.filter(isToday);
     let todayDate = filteredArr[0];
@@ -64,7 +64,7 @@ class OneHabit extends Component {
     // map over calendar to format days
     const result = calendar.map((item) => moment(item.date));
     // filter to only show today
-    const today = moment().add(5, 'd')
+    const today = moment();
     const isToday = (value) => moment(value).isSame(today, 'd');
     const filteredArr = result.filter(isToday);
     let todayDate = filteredArr[0];
@@ -82,7 +82,6 @@ class OneHabit extends Component {
 
 
   render(props) {
-    console.log('onehabit calendar', this.state.calendar);
     const { habit } = this.props;
     const dan  = {
       background: 'red'

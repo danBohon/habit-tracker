@@ -44,7 +44,7 @@ class Calendar extends Component {
     const result = calendar.map((item, index) => moment(item.date));
 
     // filter to only show previous days and today
-    const today = moment().add(5, 'd');
+    const today = moment();
     const beforeToday = (value) => moment(value).isSameOrBefore(today)
     const filteredArr = result.filter(beforeToday)
 

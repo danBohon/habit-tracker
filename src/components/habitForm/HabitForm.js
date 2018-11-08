@@ -60,8 +60,6 @@ class HabitForm extends Component {
 
 
   render() {
-    console.log('date', this.state.date);
-    
       const { title, goal } = this.state;
     return (
       <div className='form'>

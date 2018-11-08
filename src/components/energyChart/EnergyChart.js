@@ -17,12 +17,12 @@
           series: [
             {
               name: "series-1",
-              data: [null, null, null, null, null, 1, 1, 1, 2, 2, 2, 3, 3, 4, 4, 3, 2, 2, 3, 4, 5, 3,2,1]
+              data: []
             }
           ]
         };
       }
-    
+         
       render() {
         return (
           <div className="app">
@@ -30,7 +30,7 @@
               <div className="mixed-chart">
                 <Chart
                   options={this.state.options}
-                  series={this.state.series}
+                  series={this.props.series}
                   type="line"
                   width="500"
                 />

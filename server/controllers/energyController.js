@@ -18,9 +18,7 @@ module.exports = {
 
         const { id } = req.session.user;
 
-        dbInstance.get_all_energy_data( { user_id: id} ).then( log => {
-            res.status(200).json(log);
-        }).catch(error => { 
+        dbInstance.get_all_energy_data( { user_id: id} ).then( log => res.status(200).json(log)).catch(error => { 
             res.status(500).send({errorMessage: "Something went wrong in GET ALL ENERGY DATA"});
         console.log("ERROR-----💥---->", error);
         })
