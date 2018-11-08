@@ -44,7 +44,7 @@ class Calendar extends Component {
     const result = calendar.map((item, index) => moment(item.date));
 
     // filter to only show previous days and today
-    const today = moment();
+    const today = moment().add(5, 'd');
     const beforeToday = (value) => moment(value).isSameOrBefore(today)
     const filteredArr = result.filter(beforeToday)
 
@@ -59,7 +59,6 @@ class Calendar extends Component {
     this.countChecks();
   }
 
-  
   handleCheckChange = (index) => {
     // change the value of checked in object when checkbox is checked
     let newArr = this.state.daysArr
@@ -70,17 +69,21 @@ class Calendar extends Component {
 
     this.countChecks();
   }
+
+  deleteHabit = () => {
+    const { habit } = this.props.location.state;
+
+    axios.delete(`/api/habit/${habit.id}`).then(() => this.props.history.push('/'))
+  }
   
   render() {
-    console.log('calendar', this.state.calendar);
-    console.log('daysArr', this.state.daysArr);
 
     const { habit } = this.props.location.state;
     const aWeek = this.state.daysArr.map(
       (item, index) => {
         return (
           <div className="week" key={item.date}>
-            <div>{item.date}</div>
+            <div>{moment(item.date).format('ddd, MMMDD, YYYY')}</div>
             <input type="checkbox" checked={item.checked} onChange={ () => this.handleCheckChange(index)}></input>
           </div>
         )
@@ -94,6 +97,7 @@ class Calendar extends Component {
         {this.state.daysArr.length}
         </h1>
         <h2>Goal: {habit.goal}</h2>
+        <button onClick={ () => this.deleteHabit()}>Delete</button>
       </div>
     )
   }

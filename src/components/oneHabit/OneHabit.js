@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import { updateHabit } from '../../ducks/reducer';
 import axios from 'axios';
 import './oneHabit.scss';
+import HabitChart from '../habitChart/HabitChart';
+// import ProgressBar from '../progressBar/ProgressBar'
 
 class OneHabit extends Component {
   constructor() {
@@ -44,10 +46,10 @@ class OneHabit extends Component {
     // map over calendar to format days
     const result = calendar.map((item) => moment(item.date));
     // filter to only show today
-    const today = moment()
+    const today = moment().add(5, 'd')
     const isToday = (value) => moment(value).isSame(today, 'd');
     const filteredArr = result.filter(isToday);
-    let todayDate = filteredArr[0].format();
+    let todayDate = filteredArr[0];
     
     const newCal = calendar
     for (let i = 0; i < calendar.length; i++) {
@@ -62,10 +64,10 @@ class OneHabit extends Component {
     // map over calendar to format days
     const result = calendar.map((item) => moment(item.date));
     // filter to only show today
-    const today = moment()
+    const today = moment().add(5, 'd')
     const isToday = (value) => moment(value).isSame(today, 'd');
     const filteredArr = result.filter(isToday);
-    let todayDate = filteredArr[0].format();
+    let todayDate = filteredArr[0];
     
     const newCal = calendar
     for (let i = 0; i < calendar.length; i++) {
@@ -73,6 +75,7 @@ class OneHabit extends Component {
         newCal[i].checked = !newCal[i].checked
         axios.put('/api/calendar', {day: newCal[i]}).then()
         this.setState({checkedToday: calendar[i].checked})
+        // .then(() => this.countChecks())
       }
     }
   }
@@ -81,16 +84,22 @@ class OneHabit extends Component {
   render(props) {
     console.log('onehabit calendar', this.state.calendar);
     const { habit } = this.props;
+    const dan  = {
+      background: 'red'
+    }
     return (
       <div>
      <Link to={{pathname:`/calendar${habit.id}`, state: {habit}}} onClick={() => this.props.updateHabit(habit.goal, habit.start_date)}> <div className='card'>
-        <h3>{habit.title}</h3>
-        <div className='text'>Start Date: {moment(habit.start_date).format('LL')}</div>
+        <h3>{habit.title} </h3>
+        {/* <div className='text'>  Start Date: {moment(habit.start_date).format('LL')}</div> */}
         <div>Complete: {this.state.counter} </div>
-        <div>Goal: {habit.goal} </div>
+        {/* <div>Goal: {habit.goal} </div> */}
+        <progress value={this.state.counter} max={habit.goal} style={dan}></progress>
+        {/* <meter value={this.state.counter} max={habit.goal}></meter> */}
       </div></Link>
       <div>Complete habit for today:</div>
       <input type="checkbox" checked={this.state.checkedToday} onChange={ () => this.completeToday()}></input>
+      {/* <HabitChart/> */}
       </div>
     )
   }

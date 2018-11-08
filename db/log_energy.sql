@@ -1,0 +1,1 @@
+insert into energy (user_id, energy, hour, date) values (${user_id}, ${energy}, ${hour}, ${date});

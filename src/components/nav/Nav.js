@@ -48,6 +48,8 @@ class Nav extends Component {
         <div>{this.props.user.name}</div>
         <nav className={this.state.toggleNav ? 'show' : ''}>
             <ul onClick={this.toggle}>
+                <li><Link to='/'>Home</Link></li>
+                <li><Link to='/energy'>Energy</Link></li>
                 <li><Link to='/profile'>Profile</Link></li>
                 <li>Goals</li>
                 <li>Friends</li>

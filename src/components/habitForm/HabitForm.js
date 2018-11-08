@@ -16,8 +16,12 @@ class HabitForm extends Component {
         }
     }
 
+    componentDidMount() {
+      this.getAllHabits();
+    }
+
     createHabit( title, goal ) {
-      const date = moment()
+      const date = moment().format()
       this.setState( {date: date} )
       axios.post('/api/habit', {title: title, goal: goal, date: date}).then( (res) => this.createCalendar(res.data.id) ).then(() => this.getAllHabits())
     }
@@ -56,6 +60,8 @@ class HabitForm extends Component {
 
 
   render() {
+    console.log('date', this.state.date);
+    
       const { title, goal } = this.state;
     return (
       <div className='form'>

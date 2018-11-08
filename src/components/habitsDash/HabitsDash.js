@@ -17,6 +17,7 @@ class HabitsDash extends Component {
         </div>
       )
     })
+    
     return (
       <div className='dash'>
         <HabitForm />

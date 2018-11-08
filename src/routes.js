@@ -4,10 +4,12 @@ import Calendar from "./components/calendar/Calendar";
 import OneHabit from "./components/oneHabit/OneHabit";
 import HabitsDash from "./components/habitsDash/HabitsDash";
 import Profile from "./components/profile/Profile";
+import EnergyTracker from "./components/energyTracker/EnergyTracker";
 
 export default
 
 <Switch>
+    <Route path='/energy' component={EnergyTracker}/>
     <Route path='/calendar:id' component={Calendar}/> 
     <Route path='/habit' component={OneHabit}/> 
     <Route path='/profile' component={Profile}/>
