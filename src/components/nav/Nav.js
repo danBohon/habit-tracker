@@ -9,7 +9,8 @@ class Nav extends Component {
   constructor(){
     super();
     this.state = {
-        toggleNav: false
+        toggleNav: false,
+        points: null
     }
 }
   toggle = () => {
@@ -22,6 +23,7 @@ class Nav extends Component {
 
   componentDidMount() {
     this.getAllHabits();
+    this.getPoints();
 
     axios.get('/api/user').then(response => {
       this.props.userLogin(response.data);
@@ -37,22 +39,27 @@ class Nav extends Component {
       this.props.updateHabits( res.data )
     })
   }
+
+  getPoints = () => {
+    axios.get('/api/points').then( res => this.setState({points: res.data}))
+  }
+
+
   render() {
-    console.log('this.props.user', this.props);
-    
     return (
       <header className="header">
         <div className="logo">
             <Link to='/'>66 DAYS</Link>
         </div>
-        <div>{this.props.user.name}</div>
+        <Link to='/profile'><div>{this.props.user.name}</div></Link>
+        <div>{this.state.points}</div>
         <nav className={this.state.toggleNav ? 'show' : ''}>
             <ul onClick={this.toggle}>
                 <li><Link to='/'>Home</Link></li>
                 <li><Link to='/energy'>Energy</Link></li>
                 <li><Link to='/profile'>Profile</Link></li>
                 <li>Goals</li>
-                <li>Friends</li>
+                <li><Link to='/board'>Leader Board</Link></li>
             </ul>
         </nav>
         <div className='menu' onClick={this.toggle}>

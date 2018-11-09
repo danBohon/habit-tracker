@@ -86,8 +86,32 @@ module.exports = {
             dbInstance.update_checks( {id, habit_id, checked} ).then( habits => {
                 res.status(200).json(habits);
             }).catch(error => { 
-                res.status(500).send({errorMessage: "Something went wrong in CREATE CALENDAR"});
+                res.status(500).send({errorMessage: "Something went wrong in UPDATE CHECKS"});
                 console.log("ERROR-----💥---->", error);
             })
+    },
+
+    getPoints: (req, res) => {
+        const dbInstance = req.app.get('db');
+
+        const { id } = req.session.user;
+
+        dbInstance.get_points( {user_id: id} ).then( points => {
+            res.status(200).send(points[0].count);
+        }).catch(error => { 
+            res.status(500).send({errorMessage: "Something went wrong in GET POINTS"});
+            console.log("ERROR-----💥---->", error);
+        })
+    },
+
+    getLeaderBoard: (req, res) => {
+        const dbInstance  = req.app.get('db');
+
+        dbInstance.get_leaderboard_data().then( info => {
+            res.status(200).json(info);
+        }).catch(error => { 
+            res.status(500).send({errorMessage: "Something went wrong in GET LEADER BOARD"});
+            console.log("ERROR-----💥---->", error);
+        })
     }
 }

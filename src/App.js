@@ -36,7 +36,7 @@ class App extends Component {
     return (
         <div>
             {loading
-            ? <div>Loading...</div>
+            ? <div className="App">Loading...</div>
             : error
                 ? <div>There was an error loading</div>
                 : user
@@ -45,7 +45,7 @@ class App extends Component {
                   <Nav/>
                   {routes}
                   </div>
-                : <div>
+                : <div className ="App">
                     You need to <a href={url}>login</a>
                 </div>
             }

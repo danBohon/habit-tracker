@@ -40,6 +40,9 @@ app.post('/api/days', habitsController.createCalendar);
 app.post('/api/calendar', habitsController.getCalendar);
 app.put('/api/calendar', habitsController.updateChecks);
 
+app.get('/api/points', habitsController.getPoints);
+app.get('/api/leaderboard', habitsController.getLeaderBoard);
+
 // Energy
 app.post('/api/energy', energyController.createEnergyLog);
 app.get('/api/energy', energyController.getEnergyData);
