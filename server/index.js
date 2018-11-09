@@ -11,7 +11,7 @@ require('dotenv').config();
 const app = express();
 
 app.use( bodyParser.json() );
-
+app.use(express.static(`${__dirname}/../build`));
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
@@ -25,7 +25,6 @@ massive(process.env.CONNECTION_STRING).then(database => {
 });
 
 
-// app.use(express.static(__dirname + '/../build'));
 
 // Auth
 app.get('/api/user', userController.getUserData);
@@ -44,6 +43,12 @@ app.put('/api/calendar', habitsController.updateChecks);
 // Energy
 app.post('/api/energy', energyController.createEnergyLog);
 app.get('/api/energy', energyController.getEnergyData);
+
+const path = require('path')
+app.get('*', (req, res)=>{
+  res.sendFile(path.join(__dirname, '../build/index.html'));
+})
+
 
 const PORT = 4000;
 app.listen(PORT, () => {

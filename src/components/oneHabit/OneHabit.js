@@ -46,7 +46,7 @@ class OneHabit extends Component {
     // map over calendar to format days
     const result = calendar.map((item) => moment(item.date));
     // filter to only show today
-    const today = moment();
+    const today = moment()
     const isToday = (value) => moment(value).isSame(today, 'd');
     const filteredArr = result.filter(isToday);
     let todayDate = filteredArr[0];
