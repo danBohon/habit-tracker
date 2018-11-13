@@ -1,15 +1,20 @@
 
 
 $colors: (
+    main: #022a36,
+    mainSecondary:  #075d77,
+    auth0: #033646,
+    accent: #207c98,
     primary: rgb(66, 66, 66),
     inputText: rgb(255, 0, 157),
-    headerText: antiquewhite
+    headerText: antiquewhite,
+    lightGray: rgb(196, 196, 196)
 );
 
 
 @mixin button {
     height: 32px;
-    background: map-get($colors, primary);
+    background: map-get($colors, main);
     color: map-get($colors, inputText);
     border: none;
 }

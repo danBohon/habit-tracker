@@ -7,6 +7,6 @@ join
 on
     d.user_id = u.id
 where
-    checked != false
+    checked != false and u.public != false
 group by
     u.name, d.user_id;

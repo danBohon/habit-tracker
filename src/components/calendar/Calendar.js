@@ -77,9 +77,6 @@ class Calendar extends Component {
   }
   
   render() {
-    console.log('calandar', this.state.calendar);
-    console.log('daysArr', this.state.daysArr);
-    
     const { habit } = this.props.location.state;
     const aWeek = this.state.daysArr.map(
       (item, index) => {

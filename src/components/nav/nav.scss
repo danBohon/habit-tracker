@@ -16,7 +16,7 @@ $fontSizes: (
 
 .header {
     height: 50px;
-    background: map-get($colors, primary);
+    background: map-get($colors, auth0);
     display: flex;
     justify-content: space-around;
     align-items: center;

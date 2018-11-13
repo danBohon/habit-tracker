@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import './App.css';
+import 'reset-css';
+import './App.scss';
 import routes from './routes';
 import { withRouter } from 'react-router-dom';
 import Nav from './components/nav/Nav'
-import 'reset-css';
 import {connect} from 'react-redux';
 import axios from 'axios';
 import { userLogin } from './ducks/reducer';
@@ -41,12 +41,19 @@ class App extends Component {
                 ? <div>There was an error loading</div>
                 : user
                 ?
-                  <div className="App">
+                  <div className="App" id="app">
                   <Nav/>
                   {routes}
                   </div>
                 : <div className ="App">
-                    You need to <a href={url}>login</a>
+                    <header>                    
+                        <h1><span>66</span>days</h1>
+                        <h2>A LIFE CHANGING APP</h2>
+                    </header>
+
+                    <a href={url}><button>LOGIN</button></a>
+                    {/* <a href="#"><button>LOGIN</button></a> */}
+                    <p className="quote">"Here is a u super inspirational quote"  -smart guy</p>
                 </div>
             }
         </div>

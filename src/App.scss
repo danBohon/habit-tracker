@@ -1,0 +1,80 @@
+@import './sass/main.scss';
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+
+* {text-decoration: none;}
+
+.App {
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+//   background: map-get($colors, main);
+    background: linear-gradient(to top, map-get($colors, main), map-get($colors, mainSecondary));
+  h1, h2, p{
+    font-family: 'Montserrat', sans-serif;
+  }
+  header {
+      width: 400px;
+      margin: 0 auto;
+  }
+  span {
+      color: map-get($colors, lightGray);
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.349);
+  }
+  h1 {
+      font-size: 74px;
+      color: black;
+      padding: 7px
+  }
+  h2 {
+      font-size: 14px;
+      color: whitesmoke;
+    //   color: map-get($colors, lightGray);
+    //   text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.349);
+      margin-left: 46px;
+      width: 400px;
+      text-align: center;
+  }
+  p {
+      font-size: 12px;
+      color: whitesmoke
+  }
+  button {      
+      letter-spacing: 3.5px;
+      font-size: 24px;
+      background: map-get($colors, accent );
+      color: black;
+      font-family: 'Gill Sans', 'Gill Sans MT','Trebuchet MS', sans-serif;
+      width: 160px;
+      box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.349);
+      transition: 0.25s;
+      cursor: pointer;
+  }
+  button:hover {
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.349);
+    background: #1f83a1;
+  }
+  bottom:focus{outline: none} 
+  button:active {
+      outline: none;
+    box-shadow: none;
+  }
+  
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.week {
+  display: flex;
+  justify-content: center;
+}
+

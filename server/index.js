@@ -25,7 +25,6 @@ massive(process.env.CONNECTION_STRING).then(database => {
 });
 
 
-
 // Auth
 app.get('/api/user', userController.getUserData);
 app.post('/api/logout', authController.logout);
@@ -42,6 +41,8 @@ app.put('/api/calendar', habitsController.updateChecks);
 
 app.get('/api/points', habitsController.getPoints);
 app.get('/api/leaderboard', habitsController.getLeaderBoard);
+//User
+app.put('/api/user', userController.makeUserPrivate);
 
 // Energy
 app.post('/api/energy', energyController.createEnergyLog);

@@ -3,7 +3,7 @@
 .App {
   text-align: center;
   height: 100vh;
-  background: rgb(66, 66, 66);
+  background: map-g;
 }
 
 @keyframes App-logo-spin {

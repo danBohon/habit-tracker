@@ -8,7 +8,8 @@ class Profile extends Component {
         super();
         this.state = {
             loading: true,
-            error: null
+            error: null,
+            checked: true
         };
     }
 
@@ -22,9 +23,15 @@ class Profile extends Component {
         })
       }
 
+    makeUserPrivate = () => {
+        axios.put('/api/user').then()
+    }
+
     render() {
         const { loading, error } = this.state;
         const { user } = this.props;
+        console.log('user', user);
+        
             const redirectUri = encodeURIComponent(window.location.origin + '/auth/callback');
             const url = `https://${process.env.REACT_APP_AUTH0_DOMAIN}/authorize?client_id=${process.env.REACT_APP_AUTH0_CLIENT_ID}&scope=openid%20profile%20email&redirect_uri=${redirectUri}&response_type=code`;
 
@@ -39,6 +46,7 @@ class Profile extends Component {
                     <div>Name: {user.name}</div>
                     <div>Email: {user.email}</div>
                     <img src={user.picture} alt="user" />
+                    <input type="checkbox" checked={user.public} onChange={this.makeUserPrivate}/>
                     </div>
                 : <div>
                     You need to <a href={url}>login</a>
