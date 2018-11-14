@@ -3,6 +3,7 @@ import axios from 'axios';
 import moment from 'moment';
 import EnergyChart from '../energyChart/EnergyChart';
 import _ from 'lodash';
+import './energyTracker.scss';
 
 export default class EnergyTracker extends Component {
     constructor() {

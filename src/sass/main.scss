@@ -1,45 +1,143 @@
-
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 $colors: (
     main: #022a36,
     mainSecondary:  #075d77,
     auth0: #033646,
     accent: #207c98,
-    primary: rgb(66, 66, 66),
-    inputText: rgb(255, 0, 157),
+    primary: rgb(79, 85, 84),
+    back: rgb(56, 60, 61),
+    inputText: #33a3c5,
     headerText: rgb(172, 172, 172),
-    lightGray: rgb(196, 196, 196),
+    lightGray: rgb(93, 100, 100),
     black: black,
 );
 
+@mixin shadow {
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.329);
+}
 
 @mixin button {
-    height: 32px;
-    background: map-get($colors, main);
+    font-weight: 900;
+    height: 62%;
+    width: 60px;
+    background: map-get($colors, primary);
     color: map-get($colors, inputText);
     border: none;
+    font-size: 40px;
 }
 
 @mixin inputBox {
-    height: 30px;
+    font-size: 40px;
+    width: 140px;
+    font-weight: 900;
+    height: 60%;
     color: map-get($colors, inputText);
     background: map-get($colors, primary);
     border: none;
+
 }
 
 @mixin card {
+    font-family: montserrat;
     width: 400px;
     height: 100px;
-    background: rgb(43, 42, 42);
+    background: map-get($colors, primary);
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
-    color: wheat;
+    color: map-get($colors, black );
+    margin: 20px 0px 10px;
+    padding: 20px 0px;
+    border-radius: 8px;
+    @include shadow;
+    @include checkbox;
+    a {
+        color: map-get($colors, inputText)
+    }
 }
 
 @mixin flex {
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+
+
+
+
+
+
+
+
+@mixin checkbox {
+    /* Customize the label (the container) */
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 8px;
+    margin-top: 16px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: rgb(168, 168, 168);
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .container:hover input ~ .checkmark {
+    background-color: rgb(122, 122, 122);
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .container input:checked ~ .checkmark {
+    background-color: rgb(13, 122, 129);
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
 }

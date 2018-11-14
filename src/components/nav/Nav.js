@@ -58,7 +58,7 @@ class Nav extends Component {
                 <Link to='/'><li>Home</li></Link>
                 <Link to='/energy'><li>Energy</li></Link>
                 <Link to='/profile'><li>Profile</li></Link>
-                <Link to='/board'><li>Leader Board</li></Link>
+                <Link  to='/board' className="board"><li>Leader Board</li></Link>
             </ul>
         </nav>
         <div className='menu' onClick={this.toggle}>

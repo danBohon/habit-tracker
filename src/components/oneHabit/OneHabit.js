@@ -75,9 +75,9 @@ class OneHabit extends Component {
         newCal[i].checked = !newCal[i].checked
         axios.put('/api/calendar', {day: newCal[i]}).then()
         this.setState({checkedToday: calendar[i].checked})
-        // .then(() => this.countChecks())
       }
     }
+    this.countChecks();
   }
 
 
@@ -88,16 +88,20 @@ class OneHabit extends Component {
     }
     return (
       <div>
-     <Link to={{pathname:`/calendar${habit.id}`, state: {habit}}} onClick={() => this.props.updateHabit(habit.goal, habit.start_date)}> <div className='card'>
-        <h3>{habit.title} </h3>
+     <div className='card'>
+     <Link to={{pathname:`/calendar${habit.id}`, state: {habit}}} onClick={() => this.props.updateHabit(habit.goal, habit.start_date)}> 
+        <h1>{habit.title} </h1>
         {/* <div className='text'>  Start Date: {moment(habit.start_date).format('LL')}</div> */}
-        <div>Complete: {this.state.counter} </div>
+        <div className="counter">Complete: {this.state.counter} </div>
         {/* <div>Goal: {habit.goal} </div> */}
         <progress value={this.state.counter} max={habit.goal} style={dan}></progress>
         {/* <meter value={this.state.counter} max={habit.goal}></meter> */}
-      </div></Link>
-      <div>Complete habit for today:</div>
-      <input type="checkbox" checked={this.state.checkedToday} onChange={ () => this.completeToday()}></input>
+      </Link>
+        <label className="container"> Complete habit for today
+          <input type="checkbox" checked={this.state.checkedToday} onChange={ () => this.completeToday()}></input>
+          <span className="checkmark"></span>
+        </label>
+      </div>
       {/* <HabitChart/> */}
       </div>
     )
@@ -105,3 +109,6 @@ class OneHabit extends Component {
 }
 
 export default connect(null, {updateHabit} )(OneHabit)
+
+
+

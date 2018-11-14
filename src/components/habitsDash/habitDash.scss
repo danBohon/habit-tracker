@@ -1,3 +1,5 @@
+@import '../../sass/main.scss';
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 .dash {
     min-width: 320px;
@@ -6,5 +8,6 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: rgb(66, 66, 66)
+    background: map-get($colors, back)
 }
+

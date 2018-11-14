@@ -3,7 +3,19 @@
 .form {
     @include card;
     flex-direction: row;
+    padding: 0px;
+    height: 76px;
+    button {
+        width: 100px;
+    }
+    .title {
+        width: 140px;
+    }
+    .goal {
+        width: 110px;
+    }
 }
+
 
 input {
     @include inputBox

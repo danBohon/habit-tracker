@@ -63,9 +63,9 @@ class HabitForm extends Component {
       const { title, goal } = this.state;
     return (
       <div className='form'>
-        <input type="text" placeholder='Title' value={this.state.title} onChange={e => this.setState({title: e.target.value})}/>
+        <input className="title" type="text" placeholder='Title' value={this.state.title} onChange={e => this.setState({title: e.target.value})}/>
 
-        <input type="number" placeholder='Goal' value={this.state.goal} onChange={e => this.setState({goal: e.target.value})}/>
+        <input className="goal" type="number" placeholder='Goal' value={this.state.goal} onChange={e => this.setState({goal: e.target.value})}/>
 
         <button onClick={() => this.createHabit( title, goal )}>Add</button>
       </div>

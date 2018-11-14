@@ -2,8 +2,23 @@
 
 .card {
     @include card;
+    a {
+        width: 60%;
+        @include flex;
+        flex-direction: column;
+    }
+    h1 {
+        align-self: flex-start;
+        font-size: 30px;
+        text-transform: capitalize;
+    }
+    .counter {
+        align-self: flex-end;
+        margin-bottom: 8px;
+    }
 }
 
 .card:hover {
-    background: map-get($colors, primary);
+    background: map-get($colors, lightGray);
 }
+

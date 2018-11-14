@@ -5,17 +5,18 @@ $fontSizes: (
 
 );
 
-
-
 .header {
+    width: 100%;
+    position: fixed;
+    @include shadow;
     height: 50px;
-    background: rgb(102, 102, 102);
+    background: map-get($colors, primary);
     display: flex;
     justify-content: space-around;
     align-items: center;
     color: black;
     font-family: 'Montserrat', sans-serif;
-    box-shadow: 0px, 3px 6px;
+    z-index: 999;
     ul {
         min-width: 360px;
         @include flex;
@@ -25,10 +26,14 @@ $fontSizes: (
         @include flex;
     }
     ul li:hover {
-        background: rgb(136, 136, 136);
+        background: map-get($colors, lightGray )
     }
     a {
+        width: 22%;
         color: map-get($colors, black);
+    }
+    .board {
+        width: 34%;
     }
 };
 
@@ -63,12 +68,18 @@ $fontSizes: (
         transform: translate(600px, 50px);
         transition: .3s
     }
+
+    .header a {
+        width: 100%;
+    }
+    .header .board {
+        width: 100%;
+    }
     
     header nav ul {
         flex-direction: column;
         min-width: 100vw;
-        height: 200px;
-        padding: 40px 0;
+        height: 100%;
         background: rgb(41, 41, 43);
         border: 2px solid map-get($colors, inputText)
     }

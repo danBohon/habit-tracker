@@ -43,7 +43,10 @@ class App extends Component {
                 ?
                   <div className="App" id="app">
                   <Nav/>
-                  {routes}
+                  <div className="not-nav">
+                    {routes}   
+                  </div>
+                 
                   </div>
                 : <div className ="App">
                     <div className="cover">
