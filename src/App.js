@@ -46,14 +46,16 @@ class App extends Component {
                   {routes}
                   </div>
                 : <div className ="App">
-                    <header>                    
-                        <h1><span>66</span>days</h1>
-                        <h2>A LIFE CHANGING APP</h2>
-                    </header>
+                    <div className="cover">
+                        <header>                    
+                            <h1><span>66</span>days</h1>
+                            <h2>A LIFE CHANGING APP</h2>
+                        </header>
 
-                    <a href={url}><button>LOGIN</button></a>
-                    {/* <a href="#"><button>LOGIN</button></a> */}
-                    <p className="quote">"Here is a u super inspirational quote"  -smart guy</p>
+                        <a href={url}><button>LOGIN</button></a>
+                        {/* <a href="#"><button>LOGIN</button></a> */}
+                        <p className="quote">"Here is a u super inspirational quote"  -smart guy</p>
+                    </div>
                 </div>
             }
         </div>

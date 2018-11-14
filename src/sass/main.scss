@@ -7,8 +7,9 @@ $colors: (
     accent: #207c98,
     primary: rgb(66, 66, 66),
     inputText: rgb(255, 0, 157),
-    headerText: antiquewhite,
-    lightGray: rgb(196, 196, 196)
+    headerText: rgb(172, 172, 172),
+    lightGray: rgb(196, 196, 196),
+    black: black,
 );
 
 
@@ -35,4 +36,10 @@ $colors: (
     align-items: center;
     flex-direction: column;
     color: wheat;
+}
+
+@mixin flex {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }

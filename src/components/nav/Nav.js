@@ -49,17 +49,16 @@ class Nav extends Component {
     return (
       <header className="header">
         <div className="logo">
-            <Link to='/'>66 DAYS</Link>
+            <Link to='/'><h1 className="logo"><span>66</span>days</h1></Link>
         </div>
-        <Link to='/profile'><div>{this.props.user.name}</div></Link>
+        <Link to='/profile' className="username"><div>{this.props.user.name}</div></Link>
         <div>{this.state.points}</div>
         <nav className={this.state.toggleNav ? 'show' : ''}>
             <ul onClick={this.toggle}>
-                <li><Link to='/'>Home</Link></li>
-                <li><Link to='/energy'>Energy</Link></li>
-                <li><Link to='/profile'>Profile</Link></li>
-                <li>Goals</li>
-                <li><Link to='/board'>Leader Board</Link></li>
+                <Link to='/'><li>Home</li></Link>
+                <Link to='/energy'><li>Energy</li></Link>
+                <Link to='/profile'><li>Profile</li></Link>
+                <Link to='/board'><li>Leader Board</li></Link>
             </ul>
         </nav>
         <div className='menu' onClick={this.toggle}>

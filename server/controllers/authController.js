@@ -30,7 +30,7 @@ module.exports = {
         function exchangeAccessTokenForUserData(accessTokenResponse) {
             const accessToken = accessTokenResponse.data.access_token;
             console.log("accessToken---------->", accessToken);
-            const url = `http://${process.env.REACT_APP_AUTH0_DOMAIN}/userinfo?access_token=${accessToken}`
+            const url = `https://${process.env.REACT_APP_AUTH0_DOMAIN}/userinfo?access_token=${accessToken}`
 
             console.log('userInfo url', url);
             
