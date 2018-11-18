@@ -1,0 +1,6 @@
+@import '../../sass/main.scss';
+
+.week {
+    @include checkbox;
+    height: 40px;
+}

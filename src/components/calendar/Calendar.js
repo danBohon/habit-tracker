@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import moment from 'moment';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import './calendar.scss'
 
 
 
@@ -60,6 +61,7 @@ class Calendar extends Component {
   }
 
   handleCheckChange = (index) => {
+    console.log('-------checked-------');
     // change the value of checked in object when checkbox is checked
     let newArr = this.state.daysArr
     newArr[index].checked = !newArr[index].checked    
@@ -68,6 +70,7 @@ class Calendar extends Component {
     axios.put('/api/calendar', {day: this.state.daysArr[index]}).then()
 
     this.countChecks();
+    
   }
 
   deleteHabit = () => {
@@ -82,8 +85,12 @@ class Calendar extends Component {
       (item, index) => {
         return (
           <div className="week" key={item.date}>
-            <div>{moment(item.date).format('ddd, MMMDD, YYYY')}</div>
-            <input type="checkbox" checked={item.checked} onChange={ () => this.handleCheckChange(index)}></input>
+            {/* <div>{moment(item.date).format('ddd, MMMDD, YYYY')}</div>
+            <input className="check" type="checkbox" checked={item.checked} onChange={ () => this.handleCheckChange(index)} onClick={() => console.log('-------clicked-------')}></input> */}
+        <label className="container">{moment(item.date).format('ddd, MMMDD, YYYY')}
+          <input type="checkbox" checked={item.checked} onChange={ () => this.handleCheckChange(index)}></input>
+          <span className="checkmark"></span>
+        </label>
           </div>
         )
       }
