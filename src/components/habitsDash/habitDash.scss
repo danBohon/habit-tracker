@@ -2,12 +2,6 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 .dash {
-    min-width: 320px;
-    max-width: 1200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background: map-get($colors, back)
+    @include background;
 }
 

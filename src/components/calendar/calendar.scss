@@ -1,6 +1,41 @@
 @import '../../sass/main.scss';
 
+.calendar {
+    @include background;
+    button {
+        @include card;
+        height: 60px;
+        width: 180px;
+        transition: 0.35s;
+    }
+    button:hover {
+        background: rgba(105, 26, 26, 0.836);
+    }
+    .week {
+        margin: 14px;
+    }
+    .week-content {
+        @include card;
+        height: 200px;
+        flex-direction: row;
+        overflow-x: auto;
+        white-space: nowrap;
+        .container {
+            @include flex;
+            padding-left: 0;
+            background: map-get($colors, lightGray);
+            height: 130px;
+            width: 130px;
+            border-radius: 50%;
+        }
+        
+    }
+}
+
+.title-card {
+    @include card;
+}
+
 .week {
     @include checkbox;
-    height: 40px;
 }

@@ -87,22 +87,25 @@ class Calendar extends Component {
           <div className="week" key={item.date}>
             {/* <div>{moment(item.date).format('ddd, MMMDD, YYYY')}</div>
             <input className="check" type="checkbox" checked={item.checked} onChange={ () => this.handleCheckChange(index)} onClick={() => console.log('-------clicked-------')}></input> */}
-        <label className="container">{moment(item.date).format('ddd, MMMDD, YYYY')}
+        <label className="container">{moment(item.date).format('ddd, MMMDD')}
           <input type="checkbox" checked={item.checked} onChange={ () => this.handleCheckChange(index)}></input>
-          <span className="checkmark"></span>
+          {/* <span className="checkmark"></span> */}
         </label>
           </div>
         )
       }
     )
     return (
-      <div>
-        {aWeek}
-        <h1>{this.state.counter}/
-        {/* {this.props.goal} */}
-        {this.state.daysArr.length}
-        </h1>
-        <h2>Goal: {habit.goal}</h2>
+      <div className="calendar">
+        <div className="title-card">
+          <h1>{this.props.location.state.habit.title}</h1>
+          <h2>{this.state.counter}/
+          {/* {this.props.goal} */}
+          {this.state.daysArr.length}
+          </h2>
+          <h2>Goal: {habit.goal}</h2>
+        </div>
+        <div className="week-content">{aWeek}</div>
         <button onClick={ () => this.deleteHabit()}>Delete</button>
       </div>
     )

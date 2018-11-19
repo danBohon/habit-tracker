@@ -64,6 +64,17 @@ $colors: (
     align-items: center;
 }
 
+@mixin background {
+    min-width: 320px;
+    max-width: 1200px;
+    height: 800px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    background: map-get($colors, back);
+
+}
 
 
 
