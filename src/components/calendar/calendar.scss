@@ -11,15 +11,17 @@
     button:hover {
         background: rgba(105, 26, 26, 0.836);
     }
-    .week {
-        margin: 14px;
-    }
+
     .week-content {
         @include card;
+        justify-content: flex-start;
         height: 200px;
-        flex-direction: row;
+        flex-direction: row-reverse;
         overflow-x: auto;
         white-space: nowrap;
+        div {
+            @include flex;
+        }
         .container {
             @include flex;
             padding-left: 0;
@@ -27,13 +29,44 @@
             height: 130px;
             width: 130px;
             border-radius: 50%;
+            @include shadow;
+            @include transition;
+            font-size: 20px;
+            margin: 12px;
+        }
+
+        .container:hover {
+            
+            background: map-get($colors, evenLighterGray );
+            @include transition;
+            font-size: 22px;
+            height: 140px;
+            width: 140px;
+            margin: 7px;
         }
         
+        .checked {
+            transform: rotate(360deg);
+            @include inner-shadow;
+            background: map-get($colors , green);
+            @include transition;
+        }
+        .checked:hover {
+            background: map-get($colors , greenAccent);
+        }
+
     }
 }
 
 .title-card {
     @include card;
+    h1 {
+        text-transform: uppercase;
+        font-size: 48px;
+    }
+    h2 {
+        font-size: 36px;
+    }
 }
 
 .week {
