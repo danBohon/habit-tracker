@@ -12,7 +12,8 @@ class Calendar extends Component {
     this.state = {
       counter: 0,
       daysArr: [],
-      calendar: []
+      calendar: [],
+      streak: null,
     }
   }
 
@@ -22,7 +23,7 @@ class Calendar extends Component {
 
   getCalendar = () => {
     const { id } = this.props.location.state.habit;
-    axios.post('/api/calendar', {habit_id: id} ).then((res) => this.setState( {calendar: res.data} )).then(() => this.initiateDays());
+    axios.post('/api/calendar', {habit_id: id} ).then((res) => this.setState( {calendar: res.data} )).then(() => this.initiateDays()).then( () => this.countStreak(this.state.daysArr));
   }
   
   countChecks = () => {
@@ -37,6 +38,16 @@ class Calendar extends Component {
       }
     )
     this.setState({ counter: count})
+  }
+
+  countStreak = (arr) => {
+    let counter = 0;
+    for( let i = arr.length -1; i >= 0; i-- ) {
+      if (arr[i].checked) {
+        counter = counter + 1;
+      } else break
+    }
+    this.setState({ streak: counter})
   }
 
   initiateDays = () => {
@@ -61,7 +72,6 @@ class Calendar extends Component {
   }
 
   handleCheckChange = (index) => {
-    console.log('-------checked-------');
     // change the value of checked in object when checkbox is checked
     let newArr = this.state.daysArr
     newArr[index].checked = !newArr[index].checked    
@@ -70,7 +80,7 @@ class Calendar extends Component {
     axios.put('/api/calendar', {day: this.state.daysArr[index]}).then()
 
     this.countChecks();
-    
+    this.countStreak(this.state.daysArr)
   }
 
   deleteHabit = () => {
@@ -85,7 +95,7 @@ class Calendar extends Component {
       (item, index) => {
         return (
           <div className="week" key={item.date}>
-        <label className={item.checked ? "container checked" : "container"}>{moment(item.date).format('ddd, MMMDD')}
+        <label className={item.checked ? "container checked" : "container"}><div className="date">{moment(item.date).format('ddd, MMMDD')}</div>
           <input type="checkbox" checked={item.checked} onChange={ () => this.handleCheckChange(index)}></input>
           {/* <span className="checkmark"></span> */}
         </label>
@@ -102,6 +112,7 @@ class Calendar extends Component {
           {/* {this.state.daysArr.length} */}
           </h2>
           <h3>Goal: {habit.goal}</h3>
+          <h3>Streak: {this.state.streak} </h3>
         </div>
         <div className="week-content"><div>{aWeek}</div></div>
         <button onClick={ () => this.deleteHabit()}>Delete</button>

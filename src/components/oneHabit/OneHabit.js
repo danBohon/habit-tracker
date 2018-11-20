@@ -81,7 +81,7 @@ class OneHabit extends Component {
   }
 
 
-  render(props) {
+  render() {
     const { habit } = this.props;
     const dan  = {
       background: 'red'

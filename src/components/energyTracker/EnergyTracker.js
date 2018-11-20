@@ -78,7 +78,7 @@ export default class EnergyTracker extends Component {
     
     render() {
     return (
-      <div>
+      <div className="page">
             <form onSubmit={this.handleFormSubmit}>
               <div className="radio">
                 <label>

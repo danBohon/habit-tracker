@@ -2,7 +2,8 @@ const initialState = {
     goal: null,
     start_date: "",
     habits: [],
-    user: ""
+    user: "",
+    streak: null,
 };
 
 // const UPDATE_GOAL = "UPDATE_GOAL";
@@ -16,8 +17,8 @@ export default function reducer(state = initialState, action) {
 
     switch (action.type){
         case UPDATE_HABIT:
-            const { goal, start_date } = action.payload
-            return Object.assign( {}, state, { goal: goal, start_date: start_date} );
+            const { goal, start_date, streak } = action.payload
+            return Object.assign( {}, state, { goal: goal, start_date: start_date, streak: streak} );
         case UPDATE_HABITS:
             const { habits } = action.payload
             return Object.assign( {}, state, { habits: habits } );
@@ -28,12 +29,13 @@ export default function reducer(state = initialState, action) {
     }
 }
 
-export function updateHabit( goal, start_date ) {
+export function updateHabit( goal, start_date, streak ) {
     return {
         type: UPDATE_HABIT,
         payload: {
             goal: goal,
             start_date: start_date,
+            streak: streak
         }
     }
 }

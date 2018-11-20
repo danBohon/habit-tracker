@@ -1,1 +1,39 @@
+@import '../../sass/main.scss';
 
+.page {
+    @include background;
+    form {
+        @include card;
+        height: 200px;
+        @include flex;
+        align-items: flex-start;
+        button {
+            @include shadow;
+            border-radius: 5px;
+            background: map-get($colors, lightGray );
+            height: 50px;
+            width: 110px;
+            align-self: center;
+        }
+        button:hover {
+            background: map-get($colors, evenLighterGray );
+        }
+        label {
+            @include flex;
+            input {
+                height: 20px;
+                padding-bottom: 4px;
+            }
+        }
+        label:hover {
+            background: map-get($colors, lightGray );
+            @include shadow;
+        }
+    }
+}
+
+.app {
+    @include card;
+    height: 320px;
+    width: 520px;
+}
