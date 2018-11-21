@@ -1,3 +1,5 @@
+let nextTime = "";
+
 module.exports = {
     createEnergyLog: (req,res) => {
         const dbInstance = req.app.get('db');
@@ -14,7 +16,10 @@ module.exports = {
     },
 
     getEnergyData: (req, res) => {
+        // console.log('-------got hit-------');
         const dbInstance = req.app.get('db');
+
+        // const { date } = req.query;
 
         const { id } = req.session.user;
 
@@ -22,5 +27,15 @@ module.exports = {
             res.status(500).send({errorMessage: "Something went wrong in GET ALL ENERGY DATA"});
         console.log("ERROR-----💥---->", error);
         })
+    },
+
+    changeTime: (req, res) => {
+        nextTime = req.body.time
+        res.json(nextTime)
+        console.log('nextTime------------->', nextTime);
+    },
+
+    getTime: (req,res) => {
+        res.json(nextTime)
     }
 }

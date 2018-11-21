@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
 import { userLogin } from '../../ducks/reducer';
+import './profile.scss';
 
 class Profile extends Component {
     constructor() {
@@ -9,13 +10,17 @@ class Profile extends Component {
         this.state = {
             loading: true,
             error: null,
-            checked: true
+            checked: true,
+            public: null,
         };
     }
 
     componentDidMount() {
+        console.log('this.props.user.public------------->', this.props.user.public);
+        this.setState({ public: this.props.user.public })
         axios.get('/api/user').then(response => {
           this.props.userLogin(response.data);
+          console.log('response.data------------->', response.data);
         }).catch(error => {
           this.setState({ error });
         }).then(() => {
@@ -25,6 +30,7 @@ class Profile extends Component {
 
     makeUserPrivate = () => {
         axios.put('/api/user').then()
+        this.setState({public: !this.state.public})
     }
 
     render() {
@@ -36,17 +42,22 @@ class Profile extends Component {
             const url = `https://${process.env.REACT_APP_AUTH0_DOMAIN}/authorize?client_id=${process.env.REACT_APP_AUTH0_CLIENT_ID}&scope=openid%20profile%20email&redirect_uri=${redirectUri}&response_type=code`;
 
     return (
-        <div>
+        <div className="page">
             {loading
             ? <div>Loading...</div>
             : error
                 ? <div>There was an error loading</div>
                 : user
                 ? <div>
-                    <div>Name: {user.name}</div>
-                    <div>Email: {user.email}</div>
-                    <img src={user.picture} alt="user" />
-                    <input type="checkbox" checked={user.public} onChange={this.makeUserPrivate}/>
+                    <img className="pic" src={user.picture} alt="user" />
+                    <div className="info">  
+                        <div>Name: {user.name}</div>
+                        <div>Email: {user.email}</div>
+                        <label>Public Profile:</label>
+                        <input type="checkbox" checked={this.state.public} onChange={this.makeUserPrivate} />
+                    </div>
+                  
+                    
                     </div>
                 : <div>
                     You need to <a href={url}>login</a>

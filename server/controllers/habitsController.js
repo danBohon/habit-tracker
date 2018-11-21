@@ -30,9 +30,6 @@ module.exports = {
     deleteHabit: (req, res) => {
         const dbInstance = req.app.get('db');
 
-        console.log('req.params------------', req.params);
-        
-
         const { id } = req.params
 
         dbInstance.delete_habit( {habit_id: id} ).then( habits => {

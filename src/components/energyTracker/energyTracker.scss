@@ -7,17 +7,6 @@
         height: 200px;
         @include flex;
         align-items: flex-start;
-        button {
-            @include shadow;
-            border-radius: 5px;
-            background: map-get($colors, lightGray );
-            height: 50px;
-            width: 110px;
-            align-self: center;
-        }
-        button:hover {
-            background: map-get($colors, evenLighterGray );
-        }
         label {
             @include flex;
             input {
@@ -31,9 +20,27 @@
         }
     }
 }
+.button {
+    @include shadow;
+    border-radius: 5px;
+    background: map-get($colors, lightGray );
+    height: 50px;
+    width: 110px;
+    align-self: center;
+}
+.button:hover {
+    background: map-get($colors, evenLighterGray );
+}
 
 .app {
     @include card;
     height: 320px;
     width: 520px;
+}
+.disabled {
+    font-size: 12px;
+    color: rgb(99, 13, 13);
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    transform: rotateY(360deg);
 }

@@ -10,23 +10,27 @@ export default class EnergyTracker extends Component {
         super();
         this.state = {
             energyData: [],
-            selectedOption: 'option1',
+            selectedOption: '1',
             arrayForChart: [],
             series: [
                 {
                   name: "series-1",
                   data: []
                 }
-              ]
+              ],
+            disabled: false,
+            nextTime: null,
         }
     }
 
     componentDidMount() {
         this.getEnergyData();
+        this.enableButton();
     }
 
-    getEnergyData = () => {
-        axios.get('/api/energy').then((res) => this.setState( {energyData: res.data })).then(() => this.createArrayForChart());
+    getEnergyData = (fromDate) => {
+        axios.get(`/api/energy?date=${fromDate}`).then((res) => {
+        this.setState( {energyData: res.data })}).then(() => this.createArrayForChart());
     }
 
     trackEnergy = (energy) => {
@@ -42,13 +46,26 @@ export default class EnergyTracker extends Component {
           selectedOption: changeEvent.target.value
         });
     }
+
+    enableButton = () => {
+      const currentTime = moment().format('hh:mm:ss');
+      axios.get('/api/nextTime').then((res) => {
+        this.setState({ nextTime: res.data });
+        if (res.data < currentTime) {
+          this.setState({ disabled: false })
+        } else this.setState({ disabled: true })
+      })
+    }
     
     handleFormSubmit = (formSubmitEvent) => {
     formSubmitEvent.preventDefault();
-
     this.trackEnergy(parseInt(this.state.selectedOption));
-
     this.createArrayForChart();
+
+    this.setState({disabled: true})
+    const nextTime = moment().add(1, 'h').format('hh:mm');
+    this.setState({nextTime: nextTime})
+    axios.put('/api/nextTime', {time: nextTime})
     }
 
     createArrayForChart = () => {
@@ -77,6 +94,7 @@ export default class EnergyTracker extends Component {
     
     
     render() {
+      console.log('this.state.energyData------------->', this.state.energyData);
     return (
       <div className="page">
             <form onSubmit={this.handleFormSubmit}>
@@ -110,13 +128,14 @@ export default class EnergyTracker extends Component {
                   5: Awesome
                 </label>
               </div>
-              <button className="btn btn-default" type="submit">Save</button>
+              <button className={this.state.disabled? "btn btn-default button disabled" : "btn btn-default button"} type="submit" disabled={this.state.disabled}>{this.state.disabled ? <p> Come back at {this.state.nextTime} </p> : <p> save </p>}</button>
             </form>
 
             <EnergyChart 
                 arrayForChart={this.state.arrayForChart}
                 series={this.state.series}
                 />
+            {/* <button className="button" onClick={() => this.getEnergyData(moment().format('MMDDYY'))}>week</button> */}
       </div>
     )
   }

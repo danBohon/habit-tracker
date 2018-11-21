@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import './leaderBoard.scss';
 
 export default class LeaderBoard extends Component {
     constructor() {
@@ -27,8 +28,8 @@ export default class LeaderBoard extends Component {
           }
       )
     return (
-      <div>
-        {leaderBoard}
+      <div className="page">
+        <div className="leader-board">{leaderBoard}</div>
       </div>
     )
   }

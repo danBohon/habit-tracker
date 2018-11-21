@@ -48,6 +48,9 @@ app.put('/api/user', userController.makeUserPrivate);
 app.post('/api/energy', energyController.createEnergyLog);
 app.get('/api/energy', energyController.getEnergyData);
 
+app.put('/api/nextTime', energyController.changeTime);
+app.get('/api/nextTime', energyController.getTime);
+
 const path = require('path')
 app.get('*', (req, res)=>{
   res.sendFile(path.join(__dirname, '../build/index.html'));

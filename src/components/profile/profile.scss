@@ -1,0 +1,10 @@
+@import '../../sass/main.scss';
+
+.pic {
+    @include card;
+    height: 400px
+}
+
+.info {
+    @include card;
+}
