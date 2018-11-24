@@ -3,7 +3,7 @@ const axios = require('axios');
 module.exports = {
     logout: (req, res) => {
         req.session.destroy();
-        req.status(200).json({message: 'Successfully logged out '});
+        res.status(200).json({message: 'Successfully logged out '});
     },
     handleCallback: (req, res) => {
 
@@ -21,7 +21,7 @@ module.exports = {
                 client_secret: process.env.CLIENT_SECRET,
                 code: req.query.code,
                 grant_type: 'authorization_code',
-                redirect_uri: `http://${req.headers.host}/auth/callback`
+                redirect_uri: `https://${req.headers.host}/auth/callback`
             };
             console.log('payload------->', payload);
             return axios.post(`https://${process.env.REACT_APP_AUTH0_DOMAIN}/oauth/token`, payload)
