@@ -43,6 +43,7 @@ app.get('/api/points', habitsController.getPoints);
 app.get('/api/leaderboard', habitsController.getLeaderBoard);
 //User
 app.put('/api/user', userController.makeUserPrivate);
+app.get('/api/check', userController.getUserCheck);
 
 // Energy
 app.post('/api/energy', energyController.createEnergyLog);

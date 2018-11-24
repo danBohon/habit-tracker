@@ -1,0 +1,1 @@
+select public from users where id = ${id};

@@ -8,7 +8,8 @@ create table users (
     name varchar(20),
     password varchar(20),
     email varchar(30),
-    picture text
+    picture text,
+    public boolean
 );
 
 create table habits (

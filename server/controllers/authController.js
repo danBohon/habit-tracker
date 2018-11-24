@@ -3,7 +3,7 @@ const axios = require('axios');
 module.exports = {
     logout: (req, res) => {
         req.session.destroy();
-        req.status(200).json({message: 'Successfully logged out '});
+        res.status(200).json({message: 'Successfully logged out '});
     },
     handleCallback: (req, res) => {
 
