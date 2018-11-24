@@ -66,3 +66,7 @@ module.exports = {
         }
     }
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> cff7883d68da0a307c1607a09bdc1677c92678f4
