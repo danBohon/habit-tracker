@@ -10,27 +10,41 @@ class Profile extends Component {
         this.state = {
             loading: true,
             error: null,
-            checked: true,
-            public: null,
+            public: false,
         };
     }
 
     componentDidMount() {
-        console.log('this.props.user.public------------->', this.props.user.public);
-        this.setState({ public: this.props.user.public })
+        axios.get('/api/check').then((res) => {
+            console.log('res.data------------->', res.data[0].public);
+            this.setState({ public:  res.data[0].public})
+        });
         axios.get('/api/user').then(response => {
-          this.props.userLogin(response.data);
-          console.log('response.data------------->', response.data);
+            this.props.userLogin(response.data);
+            console.log('response.data------------->', response.data);
         }).catch(error => {
-          this.setState({ error });
+            this.setState({ error });
         }).then(() => {
-          this.setState({ loading: false });
-        })
+            this.setState({ loading: false });
+        });
+        
       }
 
     makeUserPrivate = () => {
-        axios.put('/api/user').then()
+        axios.put('/api/user').then(
+            res=>{
+                // console.log(res.data[0])
+                this.props.userLogin(res.data[0]);
+            }
+        //     axios.get('/api/user').then(response => {
+        //     this.props.userLogin(response.data);
+        // })
+    )
         this.setState({public: !this.state.public})
+    }
+
+    logout = () => {
+        axios.post('/api/logout').then(() => this.componentDidMount())
     }
 
     render() {
@@ -53,8 +67,12 @@ class Profile extends Component {
                     <div className="info">  
                         <div>Name: {user.name}</div>
                         <div>Email: {user.email}</div>
-                        <label>Public Profile:</label>
-                        <input type="checkbox" checked={this.state.public} onChange={this.makeUserPrivate} />
+                        <label className="container"> Public Profile
+                            <input type="checkbox" checked={this.state.public} onChange={this.makeUserPrivate}></input>
+                            <span className="checkmark"></span>
+                        </label>
+                        <button className="logout" onClick={this.logout}>Logout</button>
+
                     </div>
                   
                     

@@ -7,4 +7,22 @@
 
 .info {
     @include card;
+    height: 160px
 }
+
+input {
+    @include checkbox;
+}
+
+.logout {
+        @include shadow;
+        border-radius: 5px;
+        background: map-get($colors, lightGray );
+        height: 50px;
+        width: 160px;
+        align-self: center;
+}
+.logout:hover {
+    background: map-get($colors, evenLighterGray );
+}
+
