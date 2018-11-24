@@ -36,6 +36,6 @@ module.exports = {
     },
 
     getTime: (req,res) => {
-        res.json(nextTime)
+        res.send(nextTime)
     }
 }
