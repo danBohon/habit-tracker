@@ -1,4 +1,4 @@
-let nextTime = "";
+let nextTime = null;
 
 module.exports = {
     createEnergyLog: (req,res) => {

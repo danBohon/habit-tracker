@@ -48,7 +48,7 @@ export default class EnergyTracker extends Component {
     }
 
     enableButton = () => {
-      const currentTime = moment().format('hh:mm:ss');
+      const currentTime = moment().format('lll');
       axios.get('/api/nextTime').then((res) => {
         this.setState({ nextTime: res.data });
         if (res.data < currentTime) {
@@ -63,7 +63,7 @@ export default class EnergyTracker extends Component {
     this.createArrayForChart();
 
     this.setState({disabled: true})
-    const nextTime = moment().add(1, 'h').format('hh:mm');
+    const nextTime = moment().add(1, 'h').format('lll');
     this.setState({nextTime: nextTime})
     axios.put('/api/nextTime', {time: nextTime})
     }
@@ -128,7 +128,7 @@ export default class EnergyTracker extends Component {
                   5: Awesome
                 </label>
               </div>
-              <button className={this.state.disabled? "btn btn-default button disabled" : "btn btn-default button"} type="submit" disabled={this.state.disabled}>{this.state.disabled ? <p> Come back at {this.state.nextTime} </p> : <p> save </p>}</button>
+              <button className={this.state.disabled? "btn btn-default button disabled" : "btn btn-default button"} type="submit" disabled={this.state.disabled}>{this.state.disabled ? <p> Come back at {moment(this.state.nextTime).format('hh:mm')} </p> : <p> save </p>}</button>
             </form>
 
             <EnergyChart 
