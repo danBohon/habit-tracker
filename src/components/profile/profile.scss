@@ -7,7 +7,7 @@
 
 .info {
     @include card;
-    height: 160px
+    height: 200px
 }
 
 input {
@@ -19,8 +19,11 @@ input {
         border-radius: 5px;
         background: map-get($colors, lightGray );
         height: 50px;
-        width: 160px;
+        width: 152px;
         align-self: center;
+        font-size: 28px;
+        font-weight: 300;
+        margin: 10px;
 }
 .logout:hover {
     background: map-get($colors, evenLighterGray );
