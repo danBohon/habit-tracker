@@ -3,5 +3,14 @@
 
 .dash {
     @include background;
+    max-width: 1200px;
+    min-width: 400px;
+}
+
+.results {
+    max-width: 1000px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 

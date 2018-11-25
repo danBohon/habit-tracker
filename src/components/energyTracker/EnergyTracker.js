@@ -14,7 +14,7 @@ export default class EnergyTracker extends Component {
             arrayForChart: [],
             series: [
                 {
-                  name: "series-1",
+                  name: "Energy Level",
                   data: []
                 }
               ],

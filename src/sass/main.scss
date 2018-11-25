@@ -53,7 +53,7 @@ $colors: (
 
 @mixin card {
     font-family: montserrat;
-    width: 400px;
+    width: 380px;
     height: 100px;
     background: map-get($colors, primary);
     display: flex;
@@ -61,7 +61,7 @@ $colors: (
     align-items: center;
     flex-direction: column;
     color: map-get($colors, black );
-    margin: 20px 0px 10px;
+    margin: 20px 20px 10px;
     padding: 20px 0px;
     border-radius: 8px;
     @include shadow;

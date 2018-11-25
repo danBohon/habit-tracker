@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
 import HabitForm from '../habitForm/HabitForm';
 import OneHabit from '../oneHabit/OneHabit';
-// import axios from 'axios';
 import { connect } from 'react-redux'
-// import moment from 'moment';
 import './habitDash.scss'
 
 class HabitsDash extends Component {
@@ -21,7 +18,7 @@ class HabitsDash extends Component {
     return (
       <div className='dash'>
         <HabitForm />
-        {result}
+        <div className="results">{result}</div>
       </div>
     )
   }

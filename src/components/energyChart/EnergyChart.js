@@ -16,7 +16,7 @@
           },
           series: [
             {
-              name: "series-1",
+              name: "Energy Level",
               data: []
             }
           ]
@@ -32,7 +32,7 @@
                   options={this.state.options}
                   series={this.props.series}
                   type="line"
-                  width="500"
+                  width="100%"
                 />
               </div>
             </div>
