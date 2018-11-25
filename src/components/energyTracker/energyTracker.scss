@@ -38,7 +38,10 @@
     padding: 20px 0px;
     border-radius: 8px;
     @include shadow;
-    width: 90%;
+    width: 80%;
+    max-height: 460px;
+    min-width: 380px;
+    max-width: 800px;
 }
 
 .disabled {
