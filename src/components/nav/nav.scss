@@ -85,7 +85,7 @@ $fontSizes: (
     }
   
     header .show {
-      transform: translate(175px, 50px);
+      transform: translate(calc(100vw - 300px), 50px);
     }
 
     .username {

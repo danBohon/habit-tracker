@@ -71,7 +71,10 @@ class Profile extends Component {
                             <input type="checkbox" checked={this.state.public} onChange={this.makeUserPrivate}></input>
                             <span className="checkmark"></span>
                         </label>
-                        <button className="logout" onClick={this.logout}>Logout</button>
+                        <div>
+                            <button className="logout verify">Verify Email</button>
+                            <button className="logout" onClick={this.logout}>Logout</button>
+                        </div>
 
                     </div>
                   
