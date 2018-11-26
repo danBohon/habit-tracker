@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const massive = require('massive');
 const session = require('express-session');
 const habitsController = require('./controllers/habitsController');
+const contactController = require('./controllers/contactController');
+
 const authController = require('./controllers/authController');
 const userController = require('./controllers/userController');
 const energyController = require('./controllers/energyController');
@@ -51,6 +53,9 @@ app.get('/api/energy', energyController.getEnergyData);
 
 app.put('/api/nextTime', energyController.changeTime);
 app.get('/api/nextTime', energyController.getTime);
+
+// Contact
+app.post('/api/email', contactController.sendEmail);
 
 const path = require('path')
 app.get('*', (req, res)=>{

@@ -47,6 +47,13 @@ class Profile extends Component {
         axios.post('/api/logout').then(() => this.componentDidMount())
     }
 
+    verifyEmail = () => {
+        axios.post('/api/email', {userEmail: this.props.user.email}).then(
+            console.log('----- email sent to ----->', this.props.user.email)
+            //disable button here -- email sent
+        )
+    }
+
     render() {
         const { loading, error } = this.state;
         const { user } = this.props;
@@ -72,7 +79,7 @@ class Profile extends Component {
                             <span className="checkmark"></span>
                         </label>
                         <div>
-                            <button className="logout verify">Verify Email</button>
+                            <button onClick={this.verifyEmail} className="logout verify">Verify Email</button>
                             <button className="logout" onClick={this.logout}>Logout</button>
                         </div>
 
