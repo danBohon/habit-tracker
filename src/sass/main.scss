@@ -80,13 +80,13 @@ $colors: (
 @mixin background {
     min-width: 320px;
     max-width: 1200px;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    background: map-get($colors, back);
-
+    background: linear-gradient(to top, map-get($colors, main), map-get($colors, mainSecondary));
+    // background: map-get($colors, back);
 }
 
 

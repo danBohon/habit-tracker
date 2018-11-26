@@ -24,6 +24,7 @@ class HabitForm extends Component {
       const date = moment().format()
       this.setState( {date: date} )
       axios.post('/api/habit', {title: title, goal: goal, date: date}).then( (res) => this.createCalendar(res.data.id) ).then(() => this.getAllHabits())
+      this.setState({title: "", goal: ""})
     }
     
     getAllHabits = () => {

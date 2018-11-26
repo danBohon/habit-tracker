@@ -9,4 +9,5 @@ on
 where
     checked != false and u.public != false
 group by
-    u.name, d.user_id;
+    u.name, d.user_id
+order by count desc;

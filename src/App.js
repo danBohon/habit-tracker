@@ -57,7 +57,7 @@ class App extends Component {
 
                         <a href={url}><button className="login">LOGIN</button></a>
                         {/* <a href="#"><button>LOGIN</button></a> */}
-                        <p className="quote">"Here is a u super inspirational quote"  -smart guy</p>
+                        <p className="quote">“If you believe you can change – if you make it a habit – the change becomes real.”  -Charles Duhigg</p>
                     </div>
                 </div>
             }
