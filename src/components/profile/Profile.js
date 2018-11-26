@@ -11,6 +11,7 @@ class Profile extends Component {
             loading: true,
             error: null,
             public: false,
+            quote: null,
         };
     }
 
@@ -47,11 +48,19 @@ class Profile extends Component {
         axios.post('/api/logout').then(() => this.componentDidMount())
     }
 
+    getQuote = () => {
+
+    }
+
     verifyEmail = () => {
-        axios.post('/api/email', {userEmail: this.props.user.email}).then(
-            console.log('----- email sent to ----->', this.props.user.email)
-            //disable button here -- email sent
-        )
+        axios.get('https://api.adviceslip.com/advice').then(res => this.setState({ quote: res.data.slip.advice})).then(() => {
+            const subject = 'Welcome to 66days'
+            const message = `<p>${this.state.quote}</p><br><br><p> Verify your email: www.66days.app </p>`;
+            axios.post('/api/email', {userEmail: this.props.user.email, message, subject}).then(
+                console.log('----- email sent to ----->', this.props.user.email)
+                // disable button here -- email sent
+            )
+        });
     }
 
     render() {

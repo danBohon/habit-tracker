@@ -4,7 +4,7 @@ module.exports = {
     
     sendEmail: (req,res) => {
 
-        const {userEmail} = req.body
+        const {userEmail, message, subject} = req.body
 
         const transporter = nodemailer.createTransport({
             service: 'gmail',
@@ -17,8 +17,8 @@ module.exports = {
         const mailOptions = {
             from: process.env.NODEMAILER_EMAIL,
             to: userEmail,
-            subject: "Welcome to 66 days",
-            html: '<p> Verify your email: www.66days.app </p>'
+            subject: subject,
+            html: message
         }
 
         transporter.sendMail(mailOptions, function (err, info) {

@@ -24,6 +24,7 @@ input {
         font-size: 28px;
         font-weight: 300;
         margin: 10px;
+        cursor: pointer;
 }
 .logout:hover {
     background: map-get($colors, evenLighterGray );
