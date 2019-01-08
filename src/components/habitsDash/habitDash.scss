@@ -1,16 +1,15 @@
-@import '../../sass/main.scss';
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import "../../sass/main.scss";
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
 
 .dash {
-    @include background;
-    max-width: 1200px;
-    min-width: 400px;
+  @include background;
+  max-width: 1200px;
+  min-width: 100vw;
 }
 
 .results {
-    max-width: 1000px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  max-width: 1000px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
-

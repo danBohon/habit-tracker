@@ -1,95 +1,92 @@
-@import '../../sass/main.scss';
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import "../../sass/main.scss";
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
 
-$fontSizes: (
-
-);
+$fontSizes: ();
 
 .header {
-    width: 100%;
-    position: fixed;
-    @include shadow;
+  width: 100vw;
+  position: fixed;
+  @include shadow;
+  height: 50px;
+  background: map-get($colors, primary);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: black;
+  font-family: "Montserrat", sans-serif;
+  z-index: 999;
+  ul {
+    min-width: 360px;
+    @include flex;
+  }
+  ul li {
     height: 50px;
-    background: map-get($colors, primary);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    color: black;
-    font-family: 'Montserrat', sans-serif;
-    z-index: 999;
-    ul {
-        min-width: 360px;
-        @include flex;
-    }
-    ul li {
-        height: 50px;
-        @include flex;
-    }
-    ul li:hover {
-        background: map-get($colors, lightGray )
-    }
-    a {
-        width: 22%;
-        color: map-get($colors, black);
-    }
-    .board {
-        width: 34%;
-    }
-};
+    @include flex;
+  }
+  ul li:hover {
+    background: map-get($colors, lightGray);
+  }
+  a {
+    width: 22%;
+    color: map-get($colors, black);
+  }
+  .board {
+    width: 34%;
+  }
+}
 
 .logo {
-    font-size: 30px;
+  font-size: 30px;
 }
 
 .menu {
+  display: none;
+  .hamburger {
+    width: 35px;
+    height: 5px;
+    background: map-get($colors, black);
+    margin: 6px 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .menu {
+    display: initial;
+    position: fixed;
+    height: 36px;
+    width: 36px;
+    top: 10px;
+    right: 10px;
+    z-index: 3;
+  }
+  header nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(600px, 50px);
+    transition: 0.3s;
+  }
+
+  .header a {
+    width: 100%;
+  }
+  .header .board {
+    width: 100%;
+  }
+
+  header nav ul {
+    flex-direction: column;
+    min-width: 100vw;
+    height: 100%;
+    background: rgb(41, 41, 43);
+    border: 2px solid map-get($colors, inputText);
+  }
+
+  header .show {
+    transform: translate(calc(100vw - 300px), 50px);
+  }
+
+  .username {
     display: none;
-        .hamburger {
-            width: 35px;
-            height: 5px;
-            background: map-get($colors, black);
-            margin: 6px 0;
-        }
   }
-
-  @media screen and (max-width: 600px) {
-    .menu {
-      display: initial;
-      position: fixed;
-      height: 36px;
-      width: 36px;
-      top: 10px;
-      right: 10px;
-      z-index: 3;
-    }
-    header nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        transform: translate(600px, 50px);
-        transition: .3s
-    }
-
-    .header a {
-        width: 100%;
-    }
-    .header .board {
-        width: 100%;
-    }
-    
-    header nav ul {
-        flex-direction: column;
-        min-width: 100vw;
-        height: 100%;
-        background: rgb(41, 41, 43);
-        border: 2px solid map-get($colors, inputText)
-    }
-  
-    header .show {
-      transform: translate(calc(100vw - 300px), 50px);
-    }
-
-    .username {
-        display: none;
-    }
-  }
-
+}

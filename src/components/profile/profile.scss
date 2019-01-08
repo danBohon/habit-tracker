@@ -1,32 +1,33 @@
-@import '../../sass/main.scss';
+@import "../../sass/main.scss";
 
 .pic {
-    @include card;
-    height: 380px
+  @include card;
+  max-height: 360px;
+  min-height: 320px;
 }
 
 .info {
-    @include card;
-    height: 200px
+  @include card;
+  height: 200px;
 }
 
 input {
-    @include checkbox;
+  @include checkbox;
 }
 
 .logout {
-        @include shadow;
-        border-radius: 5px;
-        background: map-get($colors, lightGray );
-        height: 50px;
-        width: 152px;
-        align-self: center;
-        font-size: 28px;
-        font-weight: 300;
-        margin: 10px;
-        cursor: pointer;
+  @include shadow;
+  border-radius: 5px;
+  background: map-get($colors, lightGray);
+  height: 50px;
+  max-width: 152px;
+  min-width: 120px;
+  align-self: center;
+  font-size: 20px;
+  font-weight: 300;
+  margin: 10px;
+  cursor: pointer;
 }
 .logout:hover {
-    background: map-get($colors, evenLighterGray );
+  background: map-get($colors, evenLighterGray);
 }
-

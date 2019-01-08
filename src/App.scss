@@ -1,8 +1,9 @@
-@import './sass/main.scss';
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import "./sass/main.scss";
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
 
-
-* {text-decoration: none;}
+* {
+  text-decoration: none;
+}
 
 .cover {
   text-align: center;
@@ -10,61 +11,68 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-//   background: map-get($colors, main);
-    background: linear-gradient(to top, map-get($colors, main), map-get($colors, mainSecondary));
-  h1, h2, p{
-    font-family: 'Montserrat', sans-serif;
+  //   background: map-get($colors, main);
+  background: linear-gradient(
+    to top,
+    map-get($colors, main),
+    map-get($colors, mainSecondary)
+  );
+  h1,
+  h2,
+  p {
+    font-family: "Montserrat", sans-serif;
   }
   header {
-      width: 400px;
-      margin: 0 auto;
+    width: 100vw;
+    margin: 0 auto;
   }
   span {
-      color: map-get($colors, lightGray);
-      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.349);
+    color: map-get($colors, lightGray);
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.349);
   }
   h1 {
-      font-size: 74px;
-      color: black;
-      padding: 7px
+    font-size: 74px;
+    color: black;
+    padding: 7px;
   }
   h2 {
-      font-size: 14px;
-      color: whitesmoke;
+    font-size: 14px;
+    color: whitesmoke;
     //   color: map-get($colors, lightGray);
     //   text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.349);
-      margin-left: 46px;
-      width: 400px;
-      text-align: center;
+    margin-left: 46px;
+    width: 400px;
+    text-align: center;
   }
   p {
-      font-size: 12px;
-      color: whitesmoke;
-      width: 80%;
-      margin: 0 auto;
+    font-size: 12px;
+    color: whitesmoke;
+    width: 80%;
+    margin: 0 auto;
   }
-  .login {      
-      letter-spacing: 3.5px;
-      font-size: 24px;
-      background: map-get($colors, accent );
-      color: black;
-      font-family: 'Gill Sans', 'Gill Sans MT','Trebuchet MS', sans-serif;
-      width: 160px;
-      box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.349);
-      transition: 0.25s;
-      cursor: pointer;
-      font-weight: 400;
+  .login {
+    letter-spacing: 3.5px;
+    font-size: 24px;
+    background: map-get($colors, accent);
+    color: black;
+    font-family: "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
+    width: 160px;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.349);
+    transition: 0.25s;
+    cursor: pointer;
+    font-weight: 400;
   }
   button:hover {
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.349);
     background: #1f83a1;
   }
-  bottom:focus{outline: none} 
+  bottom:focus {
+    outline: none;
+  }
   button:active {
-      outline: none;
+    outline: none;
     box-shadow: none;
   }
-  
 }
 
 @keyframes App-logo-spin {
@@ -80,7 +88,6 @@
   display: flex;
   justify-content: center;
 }
-
 
 .not-nav {
   padding-top: 50px;
